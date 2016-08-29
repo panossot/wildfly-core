@@ -1,0 +1,9 @@
+/subsystem=logging:add
+/subsystem=logging/console-handler=CONSOLE:add(level="INFO",named-formatter="COLOR-PATTERN")
+/subsystem=logging/logger=com.arjuna:add(level="WARN")
+/subsystem=logging/logger=org.jboss.as.config:add(level="DEBUG")
+/subsystem=logging/logger=sun.rmi:add(level="WARN")
+/subsystem=logging/pattern-formatter=COLOR-PATTERN:add(pattern="%K{level}%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
+/subsystem=logging/pattern-formatter=PATTERN:add(pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
+/subsystem=logging/periodic-rotating-file-handler=FILE:add(autoflush="true",named-formatter="PATTERN",file={"relative-to" => "jboss.server.log.dir","path" => "server.log"},suffix=".yyyy-MM-dd",append="true")
+/subsystem=logging/root-logger=ROOT:add(level="INFO",handlers=["CONSOLE","FILE"])

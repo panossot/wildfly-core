@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.elytron">
+    <dependencies>
+        <package name="org.wildfly.extension.elytron.main"/>
+<!--        <package name="config.security"/> -->
+    </dependencies>
+</package-spec>

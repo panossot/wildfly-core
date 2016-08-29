@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.domain-servers">
+    <dependencies>
+        <package name="config.socket-binding-group"/>
+    </dependencies>
+    <!--
+    <parameters>
+        <parameter name="domain">
+            <package-scripts xmlns="urn:wildfly:package-script:1.0">
+                <script path="server-group.cli">
+                    <param name="serverGroup" value="main-server-group"/>
+                    <param name="profileName" value="default"/>
+                    <param name="socketGroupName" value="standard"/>
+                </script>
+                <script path="server-group.cli">
+                    <param name="serverGroup" value="other-server-group"/>
+                    <param name="profileName" value="default"/>
+                    <param name="socketGroupName" value="standard"/>
+                </script>
+            </package-scripts>
+        </parameter>
+        <parameter name="host">
+            <package-scripts xmlns="urn:wildfly:package-script:1.0">
+                <script path="server-config.cli" prefix="/host=${host:master}">
+                    <param name="serverName" value="server-one"/>
+                    <param name="serverGroup" value="main-server-group"/>
+                    <param name="autoStart" value="true"/>
+                    <param name="portOffset" value="0"/>
+                </script>
+                <script path="server-config.cli" prefix="/host=${host:master}">
+                    <param name="serverName" value="server-two"/>
+                    <param name="serverGroup" value="main-server-group"/>
+                    <param name="autoStart" value="true"/>
+                    <param name="portOffset" value="150"/>
+                </script>
+                <script path="server-config.cli" prefix="/host=${host:master}">
+                    <param name="serverName" value="server-three"/>
+                    <param name="serverGroup" value="other-server-group"/>
+                    <param name="autoStart" value="false"/>
+                    <param name="portOffset" value="250"/>
+                </script>
+            </package-scripts>
+        </parameter>
+    </parameters>
+    -->
+</package-spec>

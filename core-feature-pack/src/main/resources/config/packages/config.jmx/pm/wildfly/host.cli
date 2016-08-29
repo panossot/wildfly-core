@@ -1,0 +1,5 @@
+/extension=org.jboss.as.jmx:add
+/subsystem=jmx:add
+/subsystem=jmx/expose-model=expression:add
+/subsystem=jmx/expose-model=resolved:add
+/subsystem=jmx/remoting-connector=jmx:add

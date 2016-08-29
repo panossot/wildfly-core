@@ -1,0 +1,33 @@
+<scripts xmlns="urn:wildfly:package-scripts:1.0">
+    <standalone>
+        <script path="extension.cli"/>
+        <script path="common.cli">
+            <param name="logDir" value="jboss.server.log.dir"/>
+        </script>
+        <script path="management.cli">
+            <param name="configDir" value="jboss.server.config.dir"/>
+        </script>
+        <script path="application.cli">
+            <param name="configDir" value="jboss.server.config.dir"/>
+        </script>
+        <script>/subsystem=elytron/security-domain=ApplicationDomain:list-add(name=realms,value={"realm" => "local"})</script>
+    </standalone>
+    <host>
+        <script path="extension.cli" prefix="/host=${host:master}"/>
+        <script path="common.cli" prefix="/host=${host:master}">
+            <param name="logDir" value="jboss.domain.log.dir"/>
+        </script>
+        <script path="management.cli" prefix="/host=${host:master}">
+            <param name="configDir" value="jboss.domain.config.dir"/>
+        </script>
+    </host>
+    <domain>
+        <script path="extension.cli"/>
+        <script path="common.cli" prefix="/profile=$profile" collect-again="true">
+            <param name="logDir" value="jboss.server.log.dir"/>
+        </script>
+        <script path="application.cli" prefix="/profile=$profile" collect-again="true">
+            <param name="configDir" value="jboss.domain.config.dir"/>
+        </script>
+    </domain>
+</scripts>

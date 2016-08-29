@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.management.interface">
+    <dependencies>
+        <package name="config.security-realm"/>
+        <package name="config.socket-binding-group"/>
+        <package name="config.interface.management"/>
+    </dependencies>
+</package-spec>

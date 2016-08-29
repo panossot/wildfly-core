@@ -1,0 +1,1 @@
+/jvm=default:add(heap-size="64m",max-heap-size="256m",jvm-options=["-server","-XX:MetaspaceSize=96m","-XX:MaxMetaspaceSize=256m"])

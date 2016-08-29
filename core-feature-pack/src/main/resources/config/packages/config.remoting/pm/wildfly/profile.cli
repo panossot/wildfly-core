@@ -1,0 +1,3 @@
+/subsystem=remoting:add
+/subsystem=remoting/configuration=endpoint:add
+/subsystem=remoting/http-connector=http-remoting-connector:add(connector-ref="default",security-realm="ApplicationRealm")

@@ -1,0 +1,2 @@
+/subsystem=security-manager:add
+/subsystem=security-manager/deployment-permissions=default:add(maximum-permissions=[{"class" => "java.security.AllPermission"}])

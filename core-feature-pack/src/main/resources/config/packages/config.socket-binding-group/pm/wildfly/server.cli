@@ -1,0 +1,1 @@
+/socket-binding-group=$socketGroup-sockets:add(default-interface="public",port-offset="\${jboss.socket.binding.port-offset:0}")

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.standalone">
+    <dependencies>
+        <package name="config.base"/>
+        <package name="config.jmx"/>
+        <package name="config.request-controller"/>
+        <package name="config.discovery" optional="true"/>
+        <package name="config.core-management" optional="true"/>
+        <package name="config.security-manager"/>
+        <package name="org.jboss.as.standalone.main"/>
+    </dependencies>
+</package-spec>

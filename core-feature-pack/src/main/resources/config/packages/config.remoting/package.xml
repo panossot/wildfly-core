@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.remoting">
+    <dependencies>
+        <package name="org.jboss.as.remoting.main"/>
+        <package name="config.io"/>
+    </dependencies>
+</package-spec>

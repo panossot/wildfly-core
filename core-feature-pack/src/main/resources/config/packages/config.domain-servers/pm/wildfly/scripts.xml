@@ -1,0 +1,34 @@
+<scripts xmlns="urn:wildfly:package-scripts:1.0">
+    <host>
+        <script path="server-config.cli" prefix="/host=${host:master}">
+            <param name="serverName" value="server-one"/>
+            <param name="serverGroup" value="main-server-group"/>
+            <param name="autoStart" value="true"/>
+            <param name="portOffset" value="0"/>
+        </script>
+        <script path="server-config.cli" prefix="/host=${host:master}">
+            <param name="serverName" value="server-two"/>
+            <param name="serverGroup" value="main-server-group"/>
+            <param name="autoStart" value="true"/>
+            <param name="portOffset" value="150"/>
+        </script>
+        <script path="server-config.cli" prefix="/host=${host:master}">
+            <param name="serverName" value="server-three"/>
+            <param name="serverGroup" value="other-server-group"/>
+            <param name="autoStart" value="false"/>
+            <param name="portOffset" value="250"/>
+        </script>
+    </host>
+    <domain>
+        <script path="server-group.cli">
+            <param name="serverGroup" value="main-server-group"/>
+            <param name="profileName" value="default"/>
+            <param name="socketGroupName" value="standard"/>
+        </script>
+        <script path="server-group.cli">
+            <param name="serverGroup" value="other-server-group"/>
+            <param name="profileName" value="default"/>
+            <param name="socketGroupName" value="standard"/>
+        </script>
+    </domain>
+</scripts>

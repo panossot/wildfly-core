@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.domain">
+    <dependencies>
+        <package name="config.interface.unsecure"/>
+        <package name="config.base"/>
+        <package name="config.jmx"/>
+        <package name="config.request-controller"/>
+        <package name="config.core-management" optional="true"/>
+        <package name="org.jboss.as.domain-management.main"/>
+        <package name="config.domain-servers"/>
+    </dependencies>
+</package-spec>

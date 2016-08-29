@@ -1,0 +1,1 @@
+/interface=unsecure:add(inet-address="\${jboss.bind.address.unsecure:127.0.0.1}")

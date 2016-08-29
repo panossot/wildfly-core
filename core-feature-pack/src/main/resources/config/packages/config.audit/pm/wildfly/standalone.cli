@@ -1,0 +1,5 @@
+/core-service=management/access=audit:add
+/core-service=management/access=audit/json-formatter=json-formatter:add
+/core-service=management/access=audit/file-handler=file:add(formatter="json-formatter",path="audit-log.log",relative-to="jboss.server.data.dir")
+/core-service=management/access=audit/logger=audit-log:add(log-boot="true",log-read-only="false",enabled="false")
+/core-service=management/access=audit/logger=audit-log/handler=file:add
