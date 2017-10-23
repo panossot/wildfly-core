@@ -116,7 +116,7 @@ public final class StandaloneXml implements XMLElementReader<List<ModelNode>>, X
 /*
     private void logOps(List<ModelNode> ops) {
 
-        final Path path = Paths.get("/home/olubyans/git/bootops/logged/" + Thread.currentThread().getName() + ".log");
+        final Path path = Paths.get("/home/olubyans/git/bootops/logged/standalone/json/" + Thread.currentThread().getName() + ".log");
         try(BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             for(ModelNode op : ops) {
                 writer.write(op.toJSONString(true));
