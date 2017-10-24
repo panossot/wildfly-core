@@ -5,6 +5,7 @@
     <elem name="op-params"/>
   </annotation>
   <refs>
+    <ref feature="host" nillable="true"/>
     <ref feature="profile" include="true" nillable="true"/>
     <ref feature="extension" include="true"/>
   </refs>

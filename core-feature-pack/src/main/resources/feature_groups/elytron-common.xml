@@ -25,19 +25,9 @@
             <param name="realm-name" value="local"/>
         </feature>
         <feature spec="elytron-http-server-mechanism"/>
-        <feature spec="elytron-constant-permission-mapper">
-            <feature spec="elytron-constant-permission-mapper-permission">
-                <param name="permissions" value="{class-name=org.wildfly.security.auth.permission.LoginPermission}"/>
-            </feature>
-        </feature>
         <feature spec="elytron-simple-permission-mapper">
-            <param name="simple-permission-mapper" value="anonymous-permission-mapper"/>
-        </feature>
-        <feature spec="elytron-logical-permission-mapper">
-            <param name="logical-permission-mapper" value="default-permission-mapper"/>
-            <param name="logical-operation" value="unless"/>
-            <param name="left" value="constant-permission-mapper"/>
-            <param name="right" value="anonymous-permission-mapper"/>
+            <param name="simple-permission-mapper" value="default-permission-mapper"/>
+            <param name="mapping-mode" value="first"/>
         </feature>
         <feature spec="elytron-simple-role-decoder">
             <param name="simple-role-decoder" value="groups-to-roles"/>

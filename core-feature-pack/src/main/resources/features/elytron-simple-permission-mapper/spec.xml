@@ -14,6 +14,7 @@
     <param name="profile" default="PM_UNDEFINED" feature-id="true"/>
     <param name="subsystem" feature-id="true"/>
     <param name="simple-permission-mapper" feature-id="true"/>
-    <param name="permission-mappings" default="[{principals=[anonymous],permissions=[{class-name=org.wildfly.security.auth.permission.LoginPermission}]}]"/>
+    <param name="permission-mappings" default="[{principals=[anonymous]},{match-all=true,permissions=[class-name=org.wildfly.security.auth.permission.LoginPermission]}]"/>
+    <param name="mapping-mode" nillable="true"/>
   </params>
 </feature-spec>

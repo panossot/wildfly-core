@@ -17,4 +17,5 @@
         </feature-group>
     </feature>
     <feature-group name="jmx"/>
+    <feature-group name="core-management"/>
 </feature-group-spec>
