@@ -17,6 +17,6 @@
                 <param name="relative-to" value="jboss.domain.config.dir"/>
             </feature>
         </include>
-        <exclude feature-id="server-identity:host=master,core-service=management,security-realm=ApplicationRealm,server-identity=ssl"/>
+        <exclude feature-id="server-identity:core-service=management,security-realm=ApplicationRealm,server-identity=ssl"/>
     </feature-group>
 </feature-group-spec>
