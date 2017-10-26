@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature-spec name="management-interface" xmlns="urn:wildfly:pm-feature-spec:1.0">
+<feature-spec name="management-interface-http-interface" xmlns="urn:wildfly:pm-feature-spec:1.0">
   <annotation name="add">
     <elem name="addr-params" value="host,core-service,management-interface"/>
   </annotation>
@@ -16,7 +16,7 @@
   <params>
     <param name="host" default="PM_UNDEFINED" feature-id="true"/>
     <param name="core-service" default="management" feature-id="true"/>
-    <param name="management-interface" feature-id="true"/>
+    <param name="management-interface" default="http-interface" feature-id="true"/>
     <param name="security-realm" default="ManagementRealm"/>
     <param name="http-upgrade" nillable="true"/>
     <param name="socket-binding" nillable="true"/>

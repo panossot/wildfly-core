@@ -10,7 +10,7 @@
   <params>
     <param name="host" default="PM_UNDEFINED" feature-id="true"/>
     <param name="profile" default="PM_UNDEFINED" feature-id="true"/>
-    <param name="subsystem" feature-id="true"/>
+    <param name="subsystem" default="logging" feature-id="true"/>
     <param name="pattern-formatter" feature-id="true"/>
     <param name="pattern"/>
   </params>

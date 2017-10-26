@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature-group-spec name="host" xmlns="urn:wildfly:pm-feature-group:1.0">
+
+    <feature-group name="host-master"/>
+
     <feature spec="host">
         <param name="host" value="master"/>
-
-        <feature-group name="host-security-realms"/>
-        <feature-group name="host-audit"/>
-
-        <feature-group name="host-profile"/>
-
         <feature-group name="host-interfaces"/>
-        <feature-group name="host-management-interfaces"/>
-
         <feature-group name="host-server-configs"/>
-        <feature-group name="host-jvm"/>
     </feature>
 </feature-group-spec>
