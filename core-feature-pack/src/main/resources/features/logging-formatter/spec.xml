@@ -5,7 +5,7 @@
     <elem name="op-params" value="pattern"/>
   </annotation>
   <refs>
-    <ref feature="subsystem"/>
+    <ref feature="logging"/>
   </refs>
   <params>
     <param name="host" default="PM_UNDEFINED" feature-id="true"/>
