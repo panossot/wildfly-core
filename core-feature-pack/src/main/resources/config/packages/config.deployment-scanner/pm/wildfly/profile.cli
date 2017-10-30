@@ -1,2 +1,0 @@
-/subsystem=deployment-scanner:add
-/subsystem=deployment-scanner/scanner=default:add(path="deployments",relative-to="jboss.server.base.dir",scan-interval="5000",runtime-failure-causes-rollback="\${jboss.deployment.scanner.rollback.on.failure:false}")

@@ -1,5 +1,0 @@
-/management-client-content=rollout-plans:add
-/system-property=java.net.preferIPv4Stack:add(value="true")
-
-/host-exclude=WildFly10.0:add(host-release="WildFly10.0",excluded-extensions=["org.wildfly.extension.core-management","org.wildfly.extension.discovery","org.wildfly.extension.elytron"])
-/host-exclude=WildFly10.1:add(host-release="WildFly10.1",excluded-extensions=["org.wildfly.extension.core-management","org.wildfly.extension.discovery","org.wildfly.extension.elytron"])

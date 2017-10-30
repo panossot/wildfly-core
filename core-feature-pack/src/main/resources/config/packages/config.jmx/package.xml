@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-
-<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.jmx">
-    <dependencies>
-        <package name="org.jboss.as.jmx.main"/>
-        <package name="config.base"/>
-    </dependencies>
-</package-spec>

@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-
-<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.discovery">
-    <dependencies>
-        <package name="org.wildfly.extension.discovery.main"/>
-    </dependencies>
-</package-spec>

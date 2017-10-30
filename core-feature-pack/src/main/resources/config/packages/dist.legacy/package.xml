@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-
-<package-spec xmlns="urn:wildfly:pm-package:1.0" name="dist.legacy">
-    <dependencies>
-        <package name="modules.all"/>
-        <package name="dist.standalone"/>
-        <package name="dist.domain"/>
-    </dependencies>
-</package-spec>

@@ -1,2 +1,0 @@
-/core-service=management/management-interface=http-interface:add(security-realm="ManagementRealm",http-upgrade={"enabled" => true},interface="management",port="\${jboss.management.http.port:9990}")
-#/core-service=management/management-interface=http-interface:write-attribute(name=port,value="\${jboss.management.http.port:9990}")

@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-
-<package-spec xmlns="urn:wildfly:pm-package:1.0" name="config.request-controller">
-    <dependencies>
-        <package name="org.wildfly.extension.request-controller.main"/>
-        <package name="config.base"/>
-    </dependencies>
-</package-spec>

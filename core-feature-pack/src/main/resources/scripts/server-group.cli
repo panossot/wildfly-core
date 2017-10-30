@@ -1,2 +1,0 @@
-/server-group=$serverGroup:add(profile=$profileName,socket-binding-group=$socketGroupName-sockets)
-/server-group=$serverGroup/jvm=default:add(heap-size="64m",max-heap-size="512m")

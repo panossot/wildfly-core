@@ -1,8 +1,0 @@
-<scripts xmlns="urn:wildfly:package-scripts:1.0">
-    <standalone>
-        <script path="server.cli" collect-again="true"/>
-    </standalone>
-    <domain>
-        <script path="domain.cli" collect-again="true"/>
-    </domain>
-</scripts>

@@ -1,3 +1,0 @@
-/core-service=management/access=authorization/role-mapping=SuperUser:add
-/core-service=management/access=authorization/role-mapping=SuperUser/include=user-\$local:add(type="user",name="\$local")
-/core-service=management/access=authorization:write-attribute(name="provider",value="simple")
