@@ -13,6 +13,6 @@
     <param name="authentication" feature-id="true"/>
     <param name="default-user"/>
     <param name="skip-group-loading"/>
-    <param name="allowed-users"/>
+    <param name="allowed-users" nillable="true"/>
   </params>
 </feature-spec>

@@ -18,7 +18,7 @@
     <param name="profile" default="PM_UNDEFINED" feature-id="true"/>
     <param name="subsystem" feature-id="true"/>
     <param name="periodic-rotating-file-handler" feature-id="true" default="FILE"/>
-    <param name="level"/>
+    <param name="level" nillable="true"/>
     <param name="named-formatter" default="PATTERN"/>
     <param name="relative-to" default="jboss.server.log.dir"/>
     <param name="file" default="{relative-to=jboss.server.log.dir,path=server.log}"/>

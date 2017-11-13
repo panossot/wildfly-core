@@ -20,7 +20,7 @@
     <param name="security-realm" default="ManagementRealm"/>
     <param name="http-upgrade" nillable="true"/>
     <param name="socket-binding" nillable="true"/>
-    <param name="interface" nillable="false"/>
-    <param name="port" nillable="false"/>
+    <param name="interface" nillable="true"/>
+    <param name="port" nillable="true"/>
   </params>
 </feature-spec>
