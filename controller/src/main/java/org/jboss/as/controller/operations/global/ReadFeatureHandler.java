@@ -351,9 +351,9 @@ public class ReadFeatureHandler extends GlobalOperationHandlers.AbstractMultiTar
                         continue;
                     }
                     final AttributeDefinition attDef = attAccess.getAttributeDefinition();
-                    if(attDef.isDeprecated()) {
-                        continue;
-                    }
+//                    if(attDef.isDeprecated()) {
+//                        continue;
+//                    }
                     switch (attDef.getType()) {
                         case LIST:
                             if (!ObjectListAttributeDefinition.class.isAssignableFrom(attDef.getClass())) {
@@ -448,8 +448,8 @@ public class ReadFeatureHandler extends GlobalOperationHandlers.AbstractMultiTar
         ModelNode ref = new ModelNode();
         ref.get(FEATURE).set(parentFeature.require(NAME));
         refs.add(ref);
-        ModelNode params = attFeature.get(PARAMETERS).setEmptyList();
 
+        ModelNode params = attFeature.get(PARAMETERS).setEmptyList();
         Set<String> idParams = new HashSet<>();
         if (parentFeature.hasDefined(PARAMETERS)) {
             for (ModelNode param : parentFeature.require(PARAMETERS).asList()) {
@@ -497,12 +497,13 @@ public class ReadFeatureHandler extends GlobalOperationHandlers.AbstractMultiTar
 
     private void processListAttribute(final ModelNode parentFeature, final ImmutableManagementResourceRegistration registration, ObjectListAttributeDefinition objAttDef) {
         System.out.println("List attr " + registration.getPathAddress().toCLIStyleString() + " " + objAttDef.getName());
-        // we need a non resource feature
+        final ModelNode parentSpecName = parentFeature.require(NAME);
         ModelNode attFeature = new ModelNode();
-        String name = parentFeature.require(NAME).asString() + "_" + objAttDef.getName();
-        attFeature.get(NAME).set(name);
+        final String specName = parentSpecName.asString() + "." + objAttDef.getName();
+        attFeature.get(NAME).set(specName);
         ModelNode annotation = attFeature.get(ANNOTATION);
         annotation.get(ModelDescriptionConstants.NAME).set("list-add");
+        annotation.get("complex-attribute").set(objAttDef.getName());
         if (parentFeature.hasDefined(ANNOTATION)) {
             annotation.get(ADDRESS_PARAMETERS)
                     .set(parentFeature.require(ANNOTATION).require(ADDRESS_PARAMETERS));
@@ -513,28 +514,58 @@ public class ReadFeatureHandler extends GlobalOperationHandlers.AbstractMultiTar
         } else {
             addParams(attFeature, registration.getPathAddress(), new ModelNode().setEmptyList());
         }
-        annotation.get(OPERATION_PARAMETERS).set(objAttDef.getValueType().getName());
-        annotation.get(OPERATION_PARAMETERS_MAPPING).set(objAttDef.getName());
+
         ModelNode refs = attFeature.get(REFERENCES).setEmptyList();
         ModelNode ref = new ModelNode();
-        ref.get(FEATURE).set(parentFeature.require(NAME));
+        ref.get(FEATURE).set(parentSpecName);
         refs.add(ref);
+
         ModelNode params = attFeature.get(PARAMETERS).setEmptyList();
+        Set<String> idParams = new HashSet<>();
         if (parentFeature.hasDefined(PARAMETERS)) {
             for (ModelNode param : parentFeature.require(PARAMETERS).asList()) {
                 if (param.hasDefined(FEATURE_ID) && param.get(FEATURE_ID).asBoolean()) {
-                    params.add(param);
+                    final ModelNode parentParam = new ModelNode();
+                    parentParam.get(NAME).set(param.get(NAME).asString());
+                    params.add(parentParam);
                 }
             }
         }
-        ModelNode param = new ModelNode();
-        param.get(ModelDescriptionConstants.NAME).set(objAttDef.getValueType().getName());
-        if (objAttDef.getDefaultValue() != null && objAttDef.getDefaultValue().isDefined()) {
-            param.get(ModelDescriptionConstants.DEFAULT).set(objAttDef.getDefaultValue());
+
+        final ObjectTypeAttributeDefinition itemType = objAttDef.getValueType();
+        final AttributeDefinition[] attrs = itemType.getValueTypes();
+        Map<String, String> opParamMapping = Collections.emptyMap();
+        final ModelNode requestProps = new ModelNode();
+        for(AttributeDefinition attr : attrs) {
+            final ModelNode param = new ModelNode();
+            String paramName = attr.getName();
+            requestProps.add(new Property(paramName, new ModelNode()));
+            if(idParams.contains(paramName)) {
+                paramName += "-feature";
+                if(opParamMapping.isEmpty()) {
+                    opParamMapping = Collections.singletonMap(attr.getName(), paramName);
+                } else {
+                    if(opParamMapping.size() == 1) {
+                        opParamMapping = new HashMap<>(opParamMapping);
+                    }
+                    opParamMapping.put(attr.getName(), paramName);
+                }
+            }
+            param.get(ModelDescriptionConstants.NAME).set(paramName);
+            if(!attr.isRequired()) {
+                param.get(NILLABLE).set(true);
+            }
+            if (objAttDef.getDefaultValue() != null && objAttDef.getDefaultValue().isDefined()) {
+                param.get(ModelDescriptionConstants.DEFAULT).set(objAttDef.getDefaultValue());
+            }
+            if(attr.getType() == ModelType.LIST) {
+                param.get(TYPE).set("List<String>");
+            }
+            params.add(param);
         }
-        param.get(FEATURE_ID).set(true);
-        params.add(param);
-        parentFeature.get(CHILDREN).get(name).set(attFeature);
+        addOpParam(annotation, requestProps, opParamMapping);
+
+        parentFeature.get(CHILDREN).get(specName).set(attFeature);
     }
 
     private Map<String, String> addParams(ModelNode feature, PathAddress address, ModelNode requestProperties) {
