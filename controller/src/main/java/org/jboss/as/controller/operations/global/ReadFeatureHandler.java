@@ -558,9 +558,9 @@ public class ReadFeatureHandler extends GlobalOperationHandlers.AbstractMultiTar
         Map<String, String> featureParamMappings = new HashMap<>();
         for (Property att : requestProperties.asPropertyList()) {
             final ModelNode attDescription = att.getValue();
-            if(isDeprecated(attDescription)) {
-                continue;
-            }
+//            if(isDeprecated(attDescription)) {
+//                continue;
+//            }
             ModelNode param = new ModelNode();
             String paramName;
             if (paramNames.contains(att.getName()) || ((PROFILE.equals(att.getName()) || HOST.equals(att.getName())) && isSubsystem(address))) {
@@ -656,9 +656,9 @@ public class ReadFeatureHandler extends GlobalOperationHandlers.AbstractMultiTar
         StringJoiner paramMappings = new StringJoiner(",");
         boolean keepMapping = false;
         for (Property att : request) {
-            if(isDeprecated(att.getValue())) {
-                continue;
-            }
+//            if(isDeprecated(att.getValue())) {
+//                continue;
+//            }
             String realName = att.getName();
             if (featureParamMappings.containsKey(realName)) {
                 keepMapping = true;
